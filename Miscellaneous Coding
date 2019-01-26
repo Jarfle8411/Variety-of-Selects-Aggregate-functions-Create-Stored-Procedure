@@ -1,0 +1,61 @@
+use crashcourse
+go
+
+select * from products;
+go
+
+select AVG(prod_price) as avg_price from products;
+go
+
+-- do it again -- 
+
+select AVG(prod_price) as avg_price from products where vend_id=1
+go
+
+-- lets count -- 
+
+select COUNT(cust_email) as num_crust from customers;
+go
+
+use crashcourse;
+go
+
+select cust_name, cust_contact
+from customers 
+where cust_contact = 'y lie';
+
+select cust_name, cust_contact
+from customers 
+where SOUNDEX(cust_contact)=SOUNDEX('Y. lie')
+
+-- Programming--
+select 2*5
+select GETDATE();
+select GETANSINULL();
+select GETUTCDATE();
+select host_id() as computerHostID, Host_Name() as computerHostName;
+
+declare @age int;
+declare @firstname char(20), @lastName char(20);
+
+set @lastName = 'doe';
+set @firstname = 'jane';
+set @age = 21;
+
+print @firstname + @lastName + convert(char, @age);
+print @age;
+
+-- another example--
+
+ create procedure priceProducing AS
+  begin 
+ -- use crashcourse; --
+ select AVG(prod_price) AS proceAverage
+ from products;
+ end;
+
+
+
+
+
+Execute  priceProducing;
